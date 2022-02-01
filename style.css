@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Roboto Mono', sans-serif;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.btn {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 1.6rem 3.2rem;
+  border-radius: 0.5rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.clock-container {
+  height: 40rem;
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.circle-connect {
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 1px solid orangered;
+  border-radius: 50%;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.second-hand {
+  width: 0.2rem;
+  height: 8rem;
+  background-color: orangered;
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  transform-origin: bottom;
+  transform: translateX(-50%) translateY(-100%);
+  transition: all 0.1s linear;
+}
+
+.minute-hand {
+  width: 0.2rem;
+  height: 8rem;
+  background-color: black;
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  transform-origin: bottom;
+  transform: translateX(-50%) translateY(-100%);
+  transition: all 0.1s linear;
+}
+
+.hour-hand {
+  width: 0.2rem;
+  height: 5rem;
+  background-color: black;
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  transform-origin: bottom;
+  transform: translateX(-50%) translateY(-100%);
+  transition: all 0.1s linear;
+}
+
+.digital-time {
+  font-size: 4.8rem;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+}
+
+.long-date {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.long-date span {
+  color: #fff;
+  display: inline-block;
+  width: 1.7rem;
+  height: 1.7rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50%;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.light-mode {
+  background-color: #fff;
+}
+
+body.dark-mode {
+  background-color: #000;
+  color: #fff;
+}
+
+body.dark-mode .btn {
+  background-color: #fff;
+  color: #000;
+}
+
+body.dark-mode .minute-hand,
+body.dark-mode .hour-hand,
+body.dark-mode .long-date span {
+  background-color: #fff;
+}
+
+body.dark-mode .long-date span {
+  color: #000;
+  font-weight: bold;
+}
