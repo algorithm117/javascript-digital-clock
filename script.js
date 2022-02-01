@@ -105,7 +105,9 @@ function setHandRotations() {
 }
 
 function setText() {
-  digitalTime.textContent = `${hour}:${minutes} ${dayNight}`;
+  digitalTime.textContent = `${hour}:${(
+    minutes + ''
+  ).padStart(2, '0')} ${dayNight}`;
 
   longDate.innerHTML = `${weekday},${month} <span>${day}</span>`;
 }
