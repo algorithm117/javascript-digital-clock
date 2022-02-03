@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 window.onload = clock;
 
@@ -48,9 +48,10 @@ let now,
   minutes,
   hour,
   dayNight,
-  rotationDegreeSeconds = 0,
-  rotationDegreeMinutes = 0,
-  rotationDegreeHour = 0;
+  rotationDegreeSeconds,
+  rotationDegreeMinutes,
+  rotationDegreeHour,
+  flag;
 
 const months = [
   'Jan',
@@ -77,25 +78,6 @@ const weekdays = [
   'Sunday',
 ];
 
-function extraction() {
-  now = new Date();
-
-  weekday = weekdays[now.getDay()];
-  month = months[now.getMonth()];
-  day = now.getDate();
-  hour = now.getHours() % 12;
-  minutes = now.getMinutes();
-  seconds = now.getSeconds();
-  dayNight = now.getHours() >= 12 ? 'PM' : 'AM';
-
-  rotationDegreeSeconds =
-    rotationDegreeSeconds || seconds * 6;
-  rotationDegreeMinutes =
-    rotationDegreeMinutes || minutes * 6;
-  rotationDegreeHour =
-    rotationDegreeHour || hour * 30;
-}
-
 function setHandRotations() {
   secondHand.style.transform = `translateX(-50%) translateY(-100%) rotate(${rotationDegreeSeconds}deg)`;
 
@@ -113,28 +95,50 @@ function setText() {
 }
 
 function clock() {
+  tick();
+
   function tick() {
-    extraction();
+    now = new Date();
+    console.log(now);
 
-    setText();
+    weekday = weekdays[now.getDay()];
+    month = months[now.getMonth()];
+    day = now.getDate();
+    hour = now.getHours() % 12;
+    minutes = now.getMinutes();
+    seconds = now.getSeconds();
+    dayNight = now.getHours() >= 12 ? 'PM' : 'AM';
 
+    // set initial values for clock hands
     rotationDegreeSeconds =
-      rotationDegreeSeconds + 6;
+      rotationDegreeSeconds || seconds * 6;
+    rotationDegreeMinutes =
+      rotationDegreeMinutes || minutes * 6;
+    rotationDegreeHour =
+      rotationDegreeHour || hour * 30;
 
-    if (rotationDegreeSeconds % 360 === 0) {
-      rotationDegreeMinutes =
-        rotationDegreeMinutes + 6;
+    // run after clocks have been initialized once, otherwise your clock hands are in the wrong position since after initializing the hands at the correct position, you add 6 degrees which puts the second hand 6 degrees ahead of where it should be.
+
+    if (flag) {
+      rotationDegreeSeconds =
+        rotationDegreeSeconds + 6;
+
+      if (rotationDegreeSeconds % 360 === 0) {
+        rotationDegreeMinutes =
+          rotationDegreeMinutes + 6;
+      }
+
+      if (rotationDegreeMinutes % 360 === 0) {
+        rotationDegreeHour =
+          rotationDegreeHour + 30;
+      }
     }
 
-    if (rotationDegreeMinutes % 360 === 0) {
-      rotationDegreeHour =
-        rotationDegreeHour + 30;
-    }
+    flag = true;
 
     setHandRotations();
+    setText();
   }
-
-  tick();
 
   setInterval(tick, 1000);
 }

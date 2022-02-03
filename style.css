@@ -47,7 +47,7 @@ body {
   border: 1px solid orangered;
   border-radius: 50%;
   position: absolute;
-  top: 15%;
+  top: 16%;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -57,11 +57,11 @@ body {
   height: 8rem;
   background-color: orangered;
   position: absolute;
-  top: 16%;
+  top: 50%;
   left: 50%;
   transform-origin: bottom;
   transform: translateX(-50%) translateY(-100%);
-  transition: all 0.1s linear;
+  transition: transform 0.001s linear;
 }
 
 .minute-hand {
@@ -69,11 +69,11 @@ body {
   height: 8rem;
   background-color: black;
   position: absolute;
-  top: 16%;
+  top: 50%;
   left: 50%;
   transform-origin: bottom;
   transform: translateX(-50%) translateY(-100%);
-  transition: all 0.1s linear;
+  /* transition: all 0.1s linear; */
 }
 
 .hour-hand {
@@ -81,11 +81,11 @@ body {
   height: 5rem;
   background-color: black;
   position: absolute;
-  top: 16%;
+  top: 50%;
   left: 50%;
   transform-origin: bottom;
   transform: translateX(-50%) translateY(-100%);
-  transition: all 0.1s linear;
+  /* transition: all 0.1s linear; */
 }
 
 .digital-time {
@@ -145,13 +145,13 @@ body.dark-mode .long-date span {
 @media (max-width: 500px) {
   .btn {
     margin-top: 6rem;
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
   }
 }
 
 @media (max-width: 300px) {
   .btn {
     margin-top: 5rem;
-    margin-bottom: 5rem;
+    margin-bottom: 6rem;
   }
 }
