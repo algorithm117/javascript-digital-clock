@@ -103,7 +103,7 @@ function clock() {
     weekday = weekdays[now.getDay()];
     month = months[now.getMonth()];
     day = now.getDate();
-    hour = Math.abs(now.getHours() - 24);
+    hour = Math.abs(now.getHours() % 12);
     minutes = now.getMinutes();
     seconds = now.getSeconds();
     dayNight = now.getHours() >= 12 ? 'PM' : 'AM';
